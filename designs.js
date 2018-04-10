@@ -2,11 +2,13 @@
 var colorPicker = $("#colorPicker");
 // Select size input
 var sizePicker = $("#sizePicker");
+// Select canvas object
+var pixelCanvas = $("#pixelCanvas");
 
 // When size is submitted by the user, call makeGrid()
 $("#buttonSubmit").on("click", function(event) {
   event.preventDefault();
-  console.log("Listening for submit event");
+  //console.log("Listening for submit event");
 
 const height = $("#inputHeight").val();
 const width = $("#inputWidth").val();
@@ -14,19 +16,24 @@ const width = $("#inputWidth").val();
   console.log(height);
   console.log(width);
 
+  $(pixelCanvas).empty();
   makeGrid(height, width);
 });
 
 function makeGrid(height, width) {
   // Build table up to desired height
-  for (var cols = 0; cols <= height; cols++) {
+  for (var i = 0; i < height; i++) {
+    console.log("row" + i);
+
     // Create a row
-    console.log("row" + cols);
+    $(pixelCanvas).append("<tr></tr>");
 
     // Up to desired width
-    for (var rows = 0; rows <= width; rows++) {
+    for (var j = 0; j < width; j++) {
+        console.log("td" + j);
 
-        console.log("td" + rows);
+        // Add td to row
+        $("tr").last().append("<td></td>");
     }
   }
 }
