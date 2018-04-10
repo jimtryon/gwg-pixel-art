@@ -4,19 +4,17 @@ var colorPicker = $("#colorPicker");
 var sizePicker = $("#sizePicker");
 // Select canvas object
 var pixelCanvas = $("#pixelCanvas");
+// Select submit button
+var submit = $("#buttonSubmit");
 
 // When size is submitted by the user, call makeGrid()
-$("#buttonSubmit").on("click", function(event) {
-  event.preventDefault();
-  //console.log("Listening for submit event");
+submit.on("click", function(event) {
+    event.preventDefault();
 
   const height = $("#inputHeight").val();
   const width = $("#inputWidth").val();
 
-  console.log(height);
-  console.log(width);
-
-  $(pixelCanvas).empty();
+  pixelCanvas.empty();
   makeGrid(height, width);
 });
 
@@ -26,7 +24,7 @@ function makeGrid(height, width) {
     console.log("row" + i);
 
     // Create a row
-    $(pixelCanvas).append("<tr></tr>");
+    pixelCanvas.append("<tr></tr>");
 
     // Up to desired width
     for (var j = 0; j < width; j++) {
@@ -40,8 +38,8 @@ function makeGrid(height, width) {
   }
 
   // Color grid square when clicked
-  $(pixelCanvas).on("click", "td", function() {
+  pixelCanvas.on("click", "td", function() {
     // Change background color of event's target
-    $(this).css("background-color", (colorPicker).val());
+    $(this).css("background-color", colorPicker.val());
   });
 }
