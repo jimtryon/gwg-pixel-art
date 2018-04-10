@@ -10,8 +10,8 @@ $("#buttonSubmit").on("click", function(event) {
   event.preventDefault();
   //console.log("Listening for submit event");
 
-const height = $("#inputHeight").val();
-const width = $("#inputWidth").val();
+  const height = $("#inputHeight").val();
+  const width = $("#inputWidth").val();
 
   console.log(height);
   console.log(width);
@@ -30,10 +30,18 @@ function makeGrid(height, width) {
 
     // Up to desired width
     for (var j = 0; j < width; j++) {
-        console.log("td" + j);
+      console.log("td" + j);
 
-        // Add td to row
-        $("tr").last().append("<td></td>");
+      // Add td to row
+      $("tr")
+        .last()
+        .append("<td></td>");
     }
   }
+
+  // Color grid square when clicked
+  $(pixelCanvas).on("click", "td", function() {
+    // Change background color of event's target
+    $(this).css("background-color", (colorPicker).val());
+  });
 }
