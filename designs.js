@@ -9,7 +9,7 @@ var submit = $("#buttonSubmit");
 
 // When size is submitted by the user, call makeGrid()
 submit.on("click", function(event) {
-    event.preventDefault();
+  event.preventDefault();
 
   const height = $("#inputHeight").val();
   const width = $("#inputWidth").val();
@@ -38,8 +38,11 @@ function makeGrid(height, width) {
   }
 
   // Color grid square when clicked
-  pixelCanvas.on("click", "td", function() {
-    // Change background color of event's target
-    $(this).css("background-color", colorPicker.val());
+  pixelCanvas.on("mousedown mouseover", "td", function(event) {
+    // Check if mouse buttons pressed
+    if (event.buttons === 1) {
+      // Change background color of event's target
+      $(this).css("background-color", colorPicker.val());
+    }
   });
 }
